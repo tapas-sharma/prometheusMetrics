@@ -1,0 +1,13 @@
+package: github.com/tapas-sharma/prometheusMetrics
+import:
+- package: github.com/go-kit/kit
+  subpackages:
+  - endpoint
+  - log
+  - transport/http
+- package: github.com/gorilla/mux
+- package: github.com/prometheus/client_golang
+  subpackages:
+  - prometheus
+  - prometheus/promhttp
+- package: github.com/sirupsen/logrus
