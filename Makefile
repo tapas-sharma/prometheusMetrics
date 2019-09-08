@@ -3,13 +3,17 @@ BIN_DIR=./bin
 LDFLAGS += "-s -w"
 BUILD_OPTIONS := -ldflags=$(LDFLAGS)
 
-all: glide build
+all: dep build
 
-glide: 
+$(GOBIN)glide:
+	@echo "Gathering GLIDE..."
+	curl https://glide.sh/get | sh
+
+dep: $(GOBIN)glide
 	@echo "Gathering dependencies..."
 	glide install
 
-build: 
+build:
 	@echo "Building..."
 	cd $(CODE_DIR) && CGO_ENABLED=0 GOOS=linux go build $(BUILD_OPTIONS) -o $(BIN_DIR)/linux/restServer -v
 	cd $(CODE_DIR) && CGO_ENABLED=0 GOOS=darwin go build $(BUILD_OPTIONS) -o $(BIN_DIR)/osx/restServer -v
