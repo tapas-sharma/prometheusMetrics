@@ -1,6 +1,7 @@
 # Prometheus Metrics Server
 
 The code in this repo tries to implement a dummy server that has the following REST API's
+
 |API|Method|URL|Curl|
 |-|-|-|-|
 |ping|GET|http://<host>:<port>/ping|curl -XGET http://localhost:8080/ping|
